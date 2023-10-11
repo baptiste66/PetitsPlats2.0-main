@@ -5,16 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>petits plats</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header><img class="background-logo" src="/svg/background-logo.svg" alt="backgroung logo">
-        <h1><img class="logo" src="/svg/logo.svg" alt="logo petits plats"></h1>
-        <p>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</p>
-        <form>
-            <input type="text" id="recherche" name="recherche" placeholder="Rechercher une recette, un ingrédient, ...">
-            <input type="submit"  alue="./svg/search.svg">
+    <header><img class="background-logo" src="assets/svg/background-logo.svg" alt="backgroung logo">
+        <h1>
+            <img class="logo" src="assets/svg/logo.svg" alt="logo petits plats">
+        </h1>
+        <p>CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</p>
+        <form class="research">
+            <input type="text" class="research__text" name="recherche" placeholder="Rechercher une recette, un ingrédient, ...">
+            <input type="image" src="assets/svg/search.svg" alt="Rechercher une recette" class="research__logo" >
         </form>
     </header>
-    <main></main>
+    <main>
+        <select id="ingrédients" name="Ingrédients">
+            <option value="apple">Ingrédients</option>
+            <!-- Ajoutez d'autres options ici -->
+        </select>
+
+    <select  id="appareils" name="appareils">
+        <option value="apple">Appareils</option>
+        <!-- Ajoutez d'autres options ici -->
+    </select>
+
+    <select id="ustensiles" name="ustensiles">
+        <option value="apple">Ustensiles</option>
+        <!-- Ajoutez d'autres options ici -->
+    </select>
+    <div id="card"></div>
+    </main>
 </body>
 </html>
+<script type="module" src="./scripts/pages/index.js"></script>
+<script type="module" src="./data/recipes.js"></script>
+<script type="module" src="./scripts/models/data-Card.js"></script>
+<script type="module" src="./scripts/templates/card.js"></script>
+<script type="module" src="./scripts/utils/label-research.js"></script>

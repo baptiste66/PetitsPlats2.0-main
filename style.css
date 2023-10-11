@@ -1,11 +1,22 @@
+
 body{
     margin: 0;
 }
 header{
     display: flex;
 }
+a{
+    color: black;
+    text-decoration: none;
+}
+main{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    linear-gradient(0deg, #E5E5E5, #E5E5E5);
+    border: 1px solid #0000001A;
+}
+/*header*/
 .background-logo{
-   height: 600px;
+   height: 667px;
    width: 100%;
    object-fit: cover;
 }
@@ -18,22 +29,96 @@ header{
 }
 header p{position: absolute;
     display: flex;
-    width: 70%;
+    width: 60%;
     Top:245px;
-    left: 15%;
+    left: 21%;
     font-size: 44px;
     color:#FFD15B;
     text-align: center;
-    
+    justify-content: center;
+    font-family: 'Anton', sans-serif; 
+    font-weight:400;
 }
-header form{
+
+.research{   display: flex;
     position: absolute;
-    top: 400px;
-    left: 50px;
+    top: 450.42px; 
+    left: 0; 
+    width: 100%; 
+    justify-content: center; 
 }
-#recherche{
+.research__text{
     width: 954px;
     height: 52px;
     padding-left: 30px;
     border-radius: 5px;
+}
+.research__logo{
+    margin-left: -52px;
+    width: 44px;
+    margin-top: 2px;
+}
+/*label*/
+#ingredients{
+    width: 100px;
+}
+/*card*/
+#card{margin-top: 50px;
+    display: flex;
+    gap: 40px;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.recipe-card{position: relative;
+    Width:380px;
+Height:700px;
+border-radius:21px;
+background-color: white;
+}
+.recipe-card img {border-top-right-radius:21px;
+    border-top-left-radius: 21px;
+    width: 380px;
+    height: 253px;
+}
+.recipe-card .card__time{display: flex;
+    background-color: #FFD15B;
+    border-radius: 14px;
+    width: 80px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    margin-right: 0;
+    margin-left: 0px;
+}
+.recipe-card h2{
+    margin-left: 25px;
+    font-family: 'anton';
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 25px;
+}
+.recipe-card p {
+    margin-left: 25px;
+    font-family: "manrope";
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 25px;
+}
+.card__title{
+    font-family: 'Manrope';
+    color: #7A7A7A;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15px;
+}
+.debord p{display: block;
+    width: 330px;
+    height: 76px;
+    overflow: hidden;
+    margin-right: 25px;
 }
