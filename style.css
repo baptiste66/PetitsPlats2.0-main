@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+}
+header{
+    display: flex;
+}
+.background-logo{
+   height: 600px;
+   width: 100%;
+   object-fit: cover;
+}
+.logo{
+    position: absolute;
+    width: 207px;
+    height: 25.26px;
+    top: 51px;
+    left: 69px;
+}
+header p{position: absolute;
+    display: flex;
+    width: 70%;
+    Top:245px;
+    left: 15%;
+    font-size: 44px;
+    color:#FFD15B;
+    text-align: center;
+    
+}
+header form{
+    position: absolute;
+    top: 400px;
+    left: 50px;
+}
+#recherche{
+    width: 954px;
+    height: 52px;
+    padding-left: 30px;
+    border-radius: 5px;
+}
