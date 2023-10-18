@@ -18,9 +18,9 @@ cardDetails.forEach(card => {
         <img src="../../assets/photos recette/${card.image}" alt="${card.name}">
          <p  class="card__time">${card.time} min</p>
         <h2>${card.name}</h2>
-        <span class="debord"><p><span class="card__title">Recette </span>: <br> ${card.description}</p></span>
+        <span class="debord"><p><span class="card__title grey">Recette </span>: <br> ${card.description}</p></span>
 
-        <p><span class="card__title">Ingrédients</span> : <br> ${card.ingredients}</p>
+        <p><span class="card__title grey">Ingrédients</span>: <br><span class ="card__ingredient">${formatIngredients(card.ingredients)}</span></p>
         
         `;
 
@@ -34,3 +34,23 @@ const totalRecipesElement = document.createElement('p');
 totalRecipesElement.textContent = `${totalRecipes} recettes`;
 totalRecipesElement.setAttribute('class','card__total')
 recipeCardsContainer.appendChild(totalRecipesElement);
+const uniqueIngredients = [];
+
+function formatIngredients(ingredients) {
+    if (!ingredients) return '';
+
+    const ingredientList = ingredients.map(ingredient => {
+        let formattedIngredient = `<span class="card__ingredient__content">${ingredient.ingredient}`;
+        if (ingredient.quantity) {
+            formattedIngredient += `<br><span class="card__ingredient__quantity grey">${ingredient.quantity}`;
+            if (ingredient.unit) {
+                formattedIngredient += ` ${ingredient.unit}`;
+            }
+            formattedIngredient += `</span>`;
+        }
+        formattedIngredient += `</span>`;
+        return formattedIngredient;
+    });
+
+    return ingredientList.join('<br>');
+}

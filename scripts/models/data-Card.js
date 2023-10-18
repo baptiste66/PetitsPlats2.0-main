@@ -7,6 +7,8 @@ export const cardDetails = recipes.map(recipe => {
         name: recipe.name,
         ingredients: recipe.ingredients,
         time: recipe.time,
-        description: recipe.description
+        description: recipe.description,
+        ustensils: recipe.ustensils,
+        appliance: recipe.appliance,
     };
 });
