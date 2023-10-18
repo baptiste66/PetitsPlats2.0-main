@@ -1,7 +1,7 @@
 import { cardDetails } from '../models/data-Card.js';
 
 const recipeCardsContainer = document.querySelector('#card');
-
+const totalRecipes = cardDetails.length;
 
 cardDetails.forEach(card => {
     const recipeCard = document.createElement('div');
@@ -10,7 +10,11 @@ cardDetails.forEach(card => {
     const recipeLink = document.createElement('a');
     recipeLink.href = '#';
 
+    
+
+
     recipeCard.innerHTML = `
+   
         <img src="../../assets/photos recette/${card.image}" alt="${card.name}">
          <p  class="card__time">${card.time} min</p>
         <h2>${card.name}</h2>
@@ -26,3 +30,7 @@ cardDetails.forEach(card => {
    
     recipeCardsContainer.appendChild(recipeLink);
 });
+const totalRecipesElement = document.createElement('p');
+totalRecipesElement.textContent = `${totalRecipes} recettes`;
+totalRecipesElement.setAttribute('class','card__total')
+recipeCardsContainer.appendChild(totalRecipesElement);
