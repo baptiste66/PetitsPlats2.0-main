@@ -3,7 +3,7 @@ import { cardDetails } from '../models/data-Card.js';
 const ingredientsSelect = document.querySelector('#ingredients');
 const applianceSelect = document.querySelector('#appliance');
 const ustensilsSelect = document.querySelector('#ustensils');
-const selectContainer = document.querySelector('.select');
+const selectContainer = document.querySelector('.select-option');
 const recipeCardsContainer = document.querySelector('#card');
 
 const selectedIngredients = [];
@@ -25,7 +25,7 @@ function optionSelect(selectElement, selectedItems) {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   if (selectedOption.value !== 'default') {
     selectedItems.push(selectedOption.text);
-    const button = document.createElement('button');
+    const button = document.createElement('p');
     button.textContent = selectedOption.text;
     selectContainer.appendChild(button);
     selectedOption.style.backgroundColor = '#FFD15B';
@@ -58,12 +58,26 @@ function filterRecipes() {
       )
     );
   });
-
-  updateRecipeDisplay(filteredRecipes);
+updateRecipeDisplay(filteredRecipes);
   totalRecipes = filteredRecipes.length;
   totalRecipesElement.textContent = `${totalRecipes} recettes`;
   recipeCardsContainer.appendChild(totalRecipesElement);
+  if (filteredRecipes.length === 0) {
+    const selectedOptions = [...selectedIngredients, selectedAppliances[0], ...selectedUstensils].join(', ');
+    const errorMessageElement = document.createElement('p');
+    errorMessageElement.textContent = `Aucune recette ne contient les options sélectionnées : ${selectedOptions}`;
+    errorMessageElement.classList.add('error-message');
+    recipeCardsContainer.innerHTML = '';  
+    recipeCardsContainer.appendChild(errorMessageElement);  
+    totalRecipesElement.textContent = '0 recettes';  
+      recipeCardsContainer.style.margin = '0';
+  }
+  
 }
+
+
+
+
 
 function updateRecipeDisplay(recipes) {
   recipeCardsContainer.innerHTML = '';
