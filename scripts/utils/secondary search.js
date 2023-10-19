@@ -24,19 +24,47 @@ ustensilsSelect.addEventListener('change', function () {
 function optionSelect(selectElement, selectedItems) {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   if (selectedOption.value !== 'default') {
-    selectedItems.push(selectedOption.text);
-    const button = document.createElement('p');
-    button.textContent = selectedOption.text;
-    selectContainer.appendChild(button);
+    if (selectedItems.includes(selectedOption.text)) {
+      
+      const itemIndex = selectedItems.indexOf(selectedOption.text);
+      if (itemIndex !== -1) {
+        selectedItems.splice(itemIndex, 1);
+      }
+      const selectedOptionButtons = selectContainer.querySelectorAll('p');
+      for (const button of selectedOptionButtons) {
+        if (button.textContent === selectedOption.text) {
+          selectContainer.removeChild(button);
+        }
+      }
+    } else {
+      
+      selectedItems.push(selectedOption.text);
+      const button = document.createElement('p');
+      button.textContent = selectedOption.text;
+
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'Supprimer';
+      removeButton.addEventListener('click', function () {
+        const itemIndex = selectedItems.indexOf(selectedOption.text);
+        if (itemIndex !== -1) {
+          selectedItems.splice(itemIndex, 1);
+        }
+        selectContainer.removeChild(button);
+        selectElement.selectedIndex = 0;
+        filterRecipes();
+      });
+
+      button.appendChild(removeButton);
+      selectContainer.appendChild(button);
+    }
+
     selectedOption.style.backgroundColor = '#FFD15B';
     selectedOption.disabled = true;
     selectElement.selectedIndex = 0;
 
-    
     filterRecipes();
   }
 }
-
 const totalRecipesElement = document.createElement('p');
 totalRecipesElement.setAttribute('class', 'card__total');
 
@@ -74,7 +102,6 @@ updateRecipeDisplay(filteredRecipes);
   }
   
 }
-
 
 
 

@@ -64,12 +64,11 @@ searchForm.addEventListener('submit', (event) => {
     }
 
     if (filteredRecipes.length === 0) {
-      // Aucune recette trouvée, affichez le message d'absence de correspondance dans #card.
       const errorMessageElement = document.createElement('div');
       errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
-      errorMessageElement.classList.add('error-message'); // Ajoutez des styles CSS si nécessaire
-      recipeCardsContainer.innerHTML = ''; // Effacez le contenu précédent
-      recipeCardsContainer.appendChild(errorMessageElement); // Ajoutez le message d'erreur à #card
+      errorMessageElement.classList.add('error-message'); 
+      recipeCardsContainer.innerHTML = ''; 
+      recipeCardsContainer.appendChild(errorMessageElement); 
     } else {
 
         updateRecipeDisplay(filteredRecipes);

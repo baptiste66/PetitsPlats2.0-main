@@ -15,7 +15,7 @@ function addCloseButton() {
     });
     searchBar.parentNode.appendChild(newCloseButton);
   }
-  //problème value 
+  
   searchBar.addEventListener('input', function () {
     const closeButton = searchBar.parentNode.querySelector('button');
     if (searchBar.value != '') { console.log(searchBar.value)
