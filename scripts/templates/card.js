@@ -34,7 +34,7 @@ const totalRecipesElement = document.createElement('p');
 totalRecipesElement.textContent = `${totalRecipes} recettes`;
 totalRecipesElement.setAttribute('class','card__total')
 recipeCardsContainer.appendChild(totalRecipesElement);
-const uniqueIngredients = [];
+
 
 function formatIngredients(ingredients) {
     if (!ingredients) return '';

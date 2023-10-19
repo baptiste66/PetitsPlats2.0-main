@@ -53,17 +53,42 @@ header p{position: absolute;
     padding-left: 30px;
     border-radius: 5px;
 }
+
+.research__logo-container .hover {
+    display: none;
+   
+}
 .research__logo{
     margin-left: -52px;
     width: 44px;
-    margin-top: 2px;
+    margin-top: 7px;
 }
+
+.default:hover {
+    display: none;
+}
+
+.research__logo-container:hover .hover {
+   display: inline;
+   margin-left: -48px;
+}
+
+
+  
 /*label*/
 #ingredients{
     width: 100px;
 }
 
-
+.select button{
+    display: block;
+    width: 203px;
+    height: 53px;
+    text-align: left;
+    background-color: #FFD15B;
+    border-radius: 10px;
+    margin: 30px;
+}
 
 
 /*card*/

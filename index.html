@@ -17,25 +17,33 @@
         <p>CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</p>
         <form class="research">
             <input type="text" class="research__text" name="recherche" placeholder="Rechercher une recette, un ingrédient, ...">
-            <input type="image" src="assets/svg/search.svg" alt="Rechercher une recette" class="research__logo" >
+            <div class="research__logo-container">
+            <input type="image" src="assets/svg/search.svg" alt="Rechercher une recette" class="research__logo default" >
+            <input type="image" src="assets/svg/hover-search.svg" alt="Rechercher une recette" class="research__logo hover" >
+        </div>
         </form>
+        
     </header>
     <main>
         <select id="ingredients" name="Ingrédients">
-            <option >Ingrédients</option>
+            <option value="default" disabled selected>Ingrédients</option>
             <!-- Ajoutez d'autres options ici -->
         </select>
-
-    <select  id="appliance" name="appareils">
-        <option>Appareils</option>
-        <!-- Ajoutez d'autres options ici -->
-    </select>
-
-    <select id="ustensils" name="ustensiles">
-        <option>Ustensiles</option>
-        <!-- Ajoutez d'autres options ici -->
-    </select>
-    <div id="card"></div>
+        
+        <select id="appliance" name="appareils">
+            <option value="default" disabled selected>Appareils</option>
+            <!-- Ajoutez d'autres options ici -->
+        </select>
+        
+        <select id="ustensils" name="ustensiles">
+            <option value="default" disabled selected>Ustensiles</option>
+            <!-- Ajoutez d'autres options ici -->
+        </select>
+    <span class="total__card"></span>
+    <span class="select"></span>
+    <div id="card">
+        
+    </div>
     </main>
 </body>
 </html>
@@ -45,3 +53,5 @@
 <script type="module" src="./scripts/templates/card.js"></script>
 <script type="module" src="./scripts/utils/label-research.js"></script>
 <script type="module" src="./scripts/templates/label-content.js"></script>
+<script type="module" src="./scripts/utils/main search bar.js"></script>
+<script type="module" src="./scripts/utils/secondary search.js"></script>
