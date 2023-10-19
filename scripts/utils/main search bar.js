@@ -38,17 +38,16 @@ totalRecipesElement.setAttribute('class', 'card__total');
 
 let totalRecipes = 0;
 recipeCardsContainer.appendChild(totalRecipesElement);
-
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-  
+
     const searchTerm = searchBar.value.toLowerCase();
-  
+
     const filteredRecipes = [];
     let i = 0;
     while (i < cardDetails.length) {
         const { name, ingredients, description, image, time } = cardDetails[i];
-  
+
         if (name.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm)) {
             filteredRecipes.push(cardDetails[i]);
         } else {
@@ -61,22 +60,23 @@ searchForm.addEventListener('submit', (event) => {
         }
         i++;
     }
-  
+
     if (filteredRecipes.length === 0) {
-      // Aucune recette trouvée, affichez le message d'absence de correspondance dans #card.
-      const errorMessageElement = document.createElement('div');
-      errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
-      errorMessageElement.classList.add('error-message'); // Ajoutez des styles CSS si nécessaire
-      recipeCardsContainer.innerHTML = ''; // Effacez le contenu précédent
-      recipeCardsContainer.appendChild(errorMessageElement); // Ajoutez le message d'erreur à #card
+        // No recipes found, display an error message.
+        const errorMessageElement = document.createElement('div');
+        errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+        errorMessageElement.classList.add('error-message');
+        recipeCardsContainer.innerHTML = ''; // Clear the previous content
+        recipeCardsContainer.appendChild(errorMessageElement);
+        totalRecipesElement.textContent = '0 recettes'; // Update the total recipe count
     } else {
-    
         updateRecipeDisplay(filteredRecipes);
         totalRecipes = filteredRecipes.length;
         totalRecipesElement.textContent = `${totalRecipes} recettes`;
+        recipeCardsContainer.innerHTML = ''; // Clear the error message if previously shown
         recipeCardsContainer.appendChild(totalRecipesElement);
     }
-  });
+});
   
 
 function updateRecipeDisplay(recipes) {

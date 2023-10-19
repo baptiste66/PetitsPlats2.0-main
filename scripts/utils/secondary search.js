@@ -13,7 +13,6 @@ const selectedUstensils = [];
 ingredientsSelect.addEventListener('change', function () {
   optionSelect(this, selectedIngredients);
 });
-
 applianceSelect.addEventListener('change', function () {
   optionSelect(this, selectedAppliances);
 });
@@ -45,6 +44,7 @@ let totalRecipes = 0;
 recipeCardsContainer.appendChild(totalRecipesElement);
 
 
+
 function filterRecipes() {
   const filteredRecipes = cardDetails.filter((recipe) => {
     const { ingredients, appliance, ustensils } = recipe;
@@ -52,19 +52,17 @@ function filterRecipes() {
       selectedIngredients.every((ingredient) =>
         ingredients.some((ing) => ing.ingredient.toLowerCase().includes(ingredient.toLowerCase()))
       ) &&
-      selectedAppliances.every((appliance) => appliance.toLowerCase().includes(appliance.toLowerCase())) &&
+      selectedAppliances.every((applianceName) => appliance.toLowerCase().includes(applianceName.toLowerCase())) &&
       selectedUstensils.every((ustensil) =>
         ustensils.some((u) => u.toLowerCase().includes(ustensil.toLowerCase()))
       )
     );
-    
-  
   });
-updateRecipeDisplay(filteredRecipes);
+
+  updateRecipeDisplay(filteredRecipes);
   totalRecipes = filteredRecipes.length;
   totalRecipesElement.textContent = `${totalRecipes} recettes`;
   recipeCardsContainer.appendChild(totalRecipesElement);
-  
 }
 
 function updateRecipeDisplay(recipes) {
