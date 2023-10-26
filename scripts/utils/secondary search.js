@@ -21,11 +21,11 @@ ustensilsSelect.addEventListener('change', function () {
   optionSelect(this, selectedUstensils);
 });
 
+
 function optionSelect(selectElement, selectedItems) {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   if (selectedOption.value !== 'default') {
     if (selectedItems.includes(selectedOption.text)) {
-      
       const itemIndex = selectedItems.indexOf(selectedOption.text);
       if (itemIndex !== -1) {
         selectedItems.splice(itemIndex, 1);
@@ -37,13 +37,15 @@ function optionSelect(selectElement, selectedItems) {
         }
       }
     } else {
-      
       selectedItems.push(selectedOption.text);
       const button = document.createElement('p');
       button.textContent = selectedOption.text;
 
       const removeButton = document.createElement('button');
-      removeButton.textContent = 'Supprimer';
+      const closeIcon = document.createElement('img');
+      closeIcon.src = '../assets/svg/close.svg'; 
+
+      removeButton.appendChild(closeIcon);
       removeButton.addEventListener('click', function () {
         const itemIndex = selectedItems.indexOf(selectedOption.text);
         if (itemIndex !== -1) {
@@ -58,6 +60,24 @@ function optionSelect(selectElement, selectedItems) {
       selectContainer.appendChild(button);
     }
 
+    const options = [...selectElement.options];
+    options.sort((a, b) => {
+      const aSelected = selectedItems.includes(a.text);
+      const bSelected = selectedItems.includes(b.text);
+      if (aSelected === bSelected) {
+        return 0;
+      } else if (aSelected) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    
+    selectElement.innerHTML = '';
+    for (const option of options) {
+      selectElement.appendChild(option);
+    }
+
     selectedOption.style.backgroundColor = '#FFD15B';
     selectedOption.disabled = true;
     selectElement.selectedIndex = 0;
@@ -65,6 +85,8 @@ function optionSelect(selectElement, selectedItems) {
     filterRecipes();
   }
 }
+
+
 const totalRecipesElement = document.createElement('p');
 totalRecipesElement.setAttribute('class', 'card__total');
 
@@ -98,7 +120,6 @@ updateRecipeDisplay(filteredRecipes);
     recipeCardsContainer.innerHTML = '';  
     recipeCardsContainer.appendChild(errorMessageElement);  
     totalRecipesElement.textContent = '0 recettes';  
-      recipeCardsContainer.style.margin = '0';
   }
   
 }

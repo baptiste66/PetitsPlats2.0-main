@@ -6,30 +6,33 @@ const searchButton = document.querySelector('.research__logo')
 const searchForm = document.querySelector('.research')
 
 
+
+let closeButton = null;
+
 function addCloseButton() {
-    const newCloseButton = document.createElement('button');
-    newCloseButton.innerHTML = '<img src="../assets/svg/close.svg" alt="close">';
-    newCloseButton.addEventListener('click', function () {
-      searchBar.value = '';
-      newCloseButton.style.display = 'none';
+    closeButton = document.createElement('button');
+    closeButton.classList.add('reset-research')
+    closeButton.innerHTML = '<img src="../assets/svg/close.svg" alt="close">';
+    closeButton.addEventListener('click', function () {
+        searchBar.value = '';
+        closeButton.style.display = 'none';
     });
-    searchBar.parentNode.appendChild(newCloseButton);
-  }
-  
-  searchBar.addEventListener('input', function () {
-    const closeButton = searchBar.parentNode.querySelector('button');
-    if (searchBar.value != '') { console.log(searchBar.value)
-  
-      if (!closeButton) {
-        addCloseButton();
-      }
+    searchBar.parentNode.appendChild(closeButton);
+}
+
+searchBar.addEventListener('input', function () {
+    if (searchBar.value.trim() !== '') {
+        if (!closeButton) {
+            addCloseButton();
+        } else {
+            closeButton.style.display = 'block';
+        }
     } else {
-      if (closeButton) {
-        closeButton.remove();
-      }
+        if (closeButton) {
+            closeButton.style.display = 'none';
+        }
     }
-  });
- 
+});
 
 const totalRecipesElement = document.createElement('p');
 totalRecipesElement.setAttribute('class', 'card__total');
@@ -58,10 +61,19 @@ searchForm.addEventListener('submit', (event) => {
         return false;
     });
 
-    updateRecipeDisplay(filteredRecipes);
-    totalRecipes = filteredRecipes.length;
-    totalRecipesElement.textContent = `${totalRecipes} recettes`;
-    recipeCardsContainer.appendChild(totalRecipesElement);
+    if (filteredRecipes.length === 0) {
+      const errorMessageElement = document.createElement('div');
+      errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+      errorMessageElement.classList.add('error-message'); 
+      recipeCardsContainer.innerHTML = ''; 
+      recipeCardsContainer.appendChild(errorMessageElement); 
+    } else {
+
+        updateRecipeDisplay(filteredRecipes);
+        totalRecipes = filteredRecipes.length;
+        totalRecipesElement.textContent = `${totalRecipes} recettes`;
+        recipeCardsContainer.appendChild(totalRecipesElement);
+    }
 });
 
 

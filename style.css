@@ -122,7 +122,11 @@ header p{position: absolute;
     margin-left: 100px;
     align-items: center;
 }
-
+.select-option button{
+    background-color: #FFD15B;
+    border: none;
+    justify-content: right;
+}
 /*card*/
 
 .error-message{display: flex;
@@ -133,7 +137,7 @@ margin:50px 100px ;
 text-align: center;
 }
 #card{margin-top: 50px;
-    margin-left: 100px;
+   
     margin-right: 100px;
     display: flex;
     gap: 100px;

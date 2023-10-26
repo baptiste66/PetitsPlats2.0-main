@@ -19,7 +19,7 @@ cardDetails.forEach(label => {
   });
 });
 
-uniqueIngredients.sort();
+
 
 uniqueIngredients.forEach(ingredient => {
   const option = document.createElement('option');
@@ -35,7 +35,7 @@ cardDetails.forEach(label => {
       }
     });
   });
-  uniqueUstensils.sort();
+
   
   uniqueUstensils.forEach(ustensils => {
     const option = document.createElement('option');
@@ -49,7 +49,7 @@ cardDetails.forEach(label => {
     }
 });
 
-uniqueAppliance.sort();
+
 
 uniqueAppliance.forEach(appliance => {
     const option = document.createElement('option');
