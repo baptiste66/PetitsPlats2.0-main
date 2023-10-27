@@ -10,9 +10,6 @@ cardDetails.forEach(card => {
     const recipeLink = document.createElement('a');
     recipeLink.href = '#';
 
-    
-
-
     recipeCard.innerHTML = `
    
         <img src="assets/photos recette/${card.image}" alt="${card.name}">
@@ -21,13 +18,8 @@ cardDetails.forEach(card => {
         <span class="debord"><p><span class="card__title grey">Recette </span>: <br> ${card.description}</p></span>
 
         <p><span class="card__title grey">Ingrédients</span>: <br><span class ="card__ingredient">${formatIngredients(card.ingredients)}</span></p>
-        
         `;
-
-   
     recipeLink.appendChild(recipeCard);
-
-   
     recipeCardsContainer.appendChild(recipeLink);
 });
 const totalRecipesElement = document.createElement('p');
