@@ -5,10 +5,8 @@ const recipeCardsContainer = document.querySelector('#card');
 const searchButton = document.querySelector('.research__logo')
 const searchForm = document.querySelector('.research')
 
-
-
 let closeButton = null;
-
+// reset search bar
 function addCloseButton() {
     closeButton = document.createElement('button');
     closeButton.classList.add('reset-research')
@@ -19,7 +17,7 @@ function addCloseButton() {
     });
     searchBar.parentNode.appendChild(closeButton);
 }
-
+// for input create closebutton 
 searchBar.addEventListener('input', function () {
     if (searchBar.value.trim().length > 0) {
         if (!closeButton) {
@@ -54,11 +52,10 @@ totalRecipesElement.setAttribute('class', 'card__total');
 let totalRecipes = 0;
 recipeCardsContainer.appendChild(totalRecipesElement);
 
+//Research management
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-
     const searchTerm = searchBar.value.toLowerCase();
-    
     if (searchTerm.length > 3) {
         const filteredRecipes = cardDetails.filter((recipe) => {
             const { name, ingredients, description } = recipe;
@@ -69,7 +66,7 @@ searchForm.addEventListener('submit', (event) => {
             const hasMatchingIngredient = ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchTerm));
             return hasMatchingIngredient;
         });
-
+        // if no result 
         if (filteredRecipes.length === 0) {
             const errorMessageElement = document.createElement('div');
             errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
@@ -77,24 +74,20 @@ searchForm.addEventListener('submit', (event) => {
             recipeCardsContainer.innerHTML = '';
             recipeCardsContainer.appendChild(errorMessageElement);
         } else {
-           
-    
+           // if result 
             updateRecipeDisplay(filteredRecipes);
             totalRecipes = filteredRecipes.length;
             totalRecipesElement.textContent = `${totalRecipes} recettes`;
             recipeCardsContainer.appendChild(totalRecipesElement);
         }
     } else {
-        
+        //if less 3 letters
         updateRecipeDisplay(cardDetails);
         totalRecipes = cardDetails.length;
         totalRecipesElement.textContent = `${totalRecipes} recettes`;
         recipeCardsContainer.appendChild(totalRecipesElement);
     }
 });
-
-
-
 
 function updateRecipeDisplay(recipes) {
     recipeCardsContainer.innerHTML = '';
@@ -116,18 +109,14 @@ function updateRecipeDisplay(recipes) {
             <p><span class="card__title grey">Ingrédients</span>: <br><span class="card__ingredient">${formatIngredients(card.ingredients)}</span></p>
         `;
         recipeLink.appendChild(recipeCardElement);
-        
         recipeCardsContainer.appendChild(recipeLink);
     });
 }
-
-
 
 function formatIngredients(ingredients) {
     if (!Array.isArray(ingredients)) {
         return ''; 
     }
-
     const ingredientList = ingredients.map(ingredient => {
         let formattedIngredient = `<span class="card__ingredient__content">${ingredient.ingredient}`;
         if (ingredient.quantity) {
@@ -140,6 +129,5 @@ function formatIngredients(ingredients) {
         formattedIngredient += `</span>`;
         return formattedIngredient;
     });
-
     return ingredientList.join('<br>');
 }
