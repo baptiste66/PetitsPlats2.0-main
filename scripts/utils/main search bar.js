@@ -78,18 +78,11 @@ searchForm.addEventListener('submit', (event) => {
             recipeCardsContainer.appendChild(errorMessageElement);
         } else {
            
-            const recipeCards = filteredRecipes.map(recipe => createRecipeCard(recipe));
-            updateRecipeDisplay(recipeCards);
-
+    
+            updateRecipeDisplay(filteredRecipes);
             totalRecipes = filteredRecipes.length;
             totalRecipesElement.textContent = `${totalRecipes} recettes`;
-
-            recipeCardsContainer.innerHTML = '';
             recipeCardsContainer.appendChild(totalRecipesElement);
-
-            recipeCards.forEach(card => {
-                recipeCardsContainer.appendChild(card);
-            });
         }
     } else {
         

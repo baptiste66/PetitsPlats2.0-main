@@ -100,6 +100,8 @@ header p{position: absolute;
   height: 53px;
   align-items: center;
   margin-left: 100px;
+  border: 5px;
+  padding-left: 15px;
 }
 .select-option button{
   margin-left: 80px;
@@ -112,7 +114,7 @@ header p{position: absolute;
 .tag-research{
     margin-left: 100px;
     display: flex;
-    gap: 30px;
+    gap: 80px;
     margin-top: 20px;
 }
   .filterBtn {display: flex;
@@ -127,6 +129,7 @@ header p{position: absolute;
   
   .filterBtnName {
     margin-right: 100px;
+    padding-left: 10px;
   }
   
   .filterList {
@@ -165,6 +168,33 @@ header p{position: absolute;
   }
   .filterBtn.active{
     display: block
+  }
+.searchInputButton{
+  margin-left: -25px;
+}
+  .closebutton-ingredients{
+    position: absolute;
+    left: 160px;
+   display: flex;
+    border: none;
+    background: none;
+  }
+  .closebutton-appliance{
+    position: absolute;
+    left: 160px;
+   display: flex;
+    border: none;
+    background: none;
+  }
+  .closebutton-utensils{
+    position: absolute;
+    left: 160px;
+   display: flex;
+    border: none;
+    background: none;
+  }
+  .delete{
+    display: none;
   }
   
 /*card*/
