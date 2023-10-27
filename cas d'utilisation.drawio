@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" modified="2023-10-27T00:48:58.053Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="RAMpRNSH0FHV6qAJwbyf" version="22.0.8" type="github">
+  <diagram name="Page-1" id="yE9tuMjjzbdsiVKarMhN">
+    <mxGraphModel dx="1050" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lmp-GdL6mwtjaxK06hks-1" value="Fonctionnalité : recherche par mots clés" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-2" value="problématique: offrir un mode de recherche optimiser et performant" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="50" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-5" value="option 1 : méthode filter, map et foreach" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-6" value="avantages:&lt;br&gt;-moins de code&lt;br&gt;-plus de lisibilité et plus facile à comprendre&amp;nbsp;&lt;br&gt;-méthode la plus rapide au bench" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="380" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-7" value="option 2 : méthode boucle for et while&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-8" value="avantages:&lt;br&gt;-plus flexible&amp;nbsp;&lt;br&gt;-plus familière pour les dévelopeurs&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="280" width="380" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-9" value="inconvénients :" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="120" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-10" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot; face=&quot;Roboto, Helvetica Neue, sans-serif&quot; color=&quot;#151526&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;inconvénients:&lt;br&gt;&lt;/span&gt;&lt;/font&gt;-plus de code&lt;br&gt;-moins optimiser&lt;br&gt;-moins lisible et plus compliqué à comprendre&amp;nbsp;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="350" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lmp-GdL6mwtjaxK06hks-11" value="solutions retenue : la méthode numéro 1 est retenue celle-ci est plus optimisée que la deuxième&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="410" width="580" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
