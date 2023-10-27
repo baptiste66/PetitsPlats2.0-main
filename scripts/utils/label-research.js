@@ -20,13 +20,13 @@ function filterOptions(options, searchText) {
         }
     });
 }
-
+//Ingredient search management
 ingredientsSearch.forEach(input => {
     input.addEventListener('input', () => {
         const searchText = input.value;
         filterOptions(ingredientsOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
+        
         if (searchText === '') {
             closeIngredient.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -34,13 +34,13 @@ ingredientsSearch.forEach(input => {
         }
     });
 });
-
+//appliance search management
 applianceSearch.forEach(input => {
     input.addEventListener('input', () => {
         const searchText = input.value;
         filterOptions(applianceOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
+        
         if (searchText === '') {
             closeAppliance.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -48,13 +48,13 @@ applianceSearch.forEach(input => {
         }
     });
 });
-
+//ustensils search management
 ustensilsSearch.forEach(input => {
     input.addEventListener('input', () => {
         const searchText = input.value;
         filterOptions(ustensilsOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
+        
         if (searchText === '') {
             closeUtensils.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -62,10 +62,10 @@ ustensilsSearch.forEach(input => {
         }
     });
 });
-
+//reset search bar for 
 closeIngredient.forEach(closeButton => {
     closeButton.addEventListener('click', () => {
-        // Réinitialise la barre de recherche et supprime la classe "delete"
+        
         ingredientsSearch.forEach(input => {
             input.value = '';
             filterOptions(ingredientsOptions, '');
@@ -73,10 +73,10 @@ closeIngredient.forEach(closeButton => {
         });
     });
 });
-
+//reset search bar for 
 closeAppliance.forEach(closeButton => {
     closeButton.addEventListener('click', () => {
-        // Réinitialise la barre de recherche et supprime la classe "delete"
+        
         applianceSearch.forEach(input => {
             input.value = '';
             filterOptions(applianceOptions, '');
@@ -84,10 +84,10 @@ closeAppliance.forEach(closeButton => {
         });
     });
 });
-
+//reset search bar for 
 closeUtensils.forEach(closeButton => {
     closeButton.addEventListener('click', () => {
-        // Réinitialise la barre de recherche et supprime la classe "delete"
+        
         ustensilsSearch.forEach(input => {
             input.value = '';
             filterOptions(ustensilsOptions, '');
@@ -95,9 +95,9 @@ closeUtensils.forEach(closeButton => {
         });
     });
 });
-
+// reset button for f5
 window.addEventListener('load', function () {
-    // Si la barre de recherche est vide, ajoute la classe "delete" aux boutons close
+   
     ingredientsSearch.forEach(input => {
         if (input.value === '') {
             closeIngredient.forEach(closeButton => closeButton.classList.add('delete'));

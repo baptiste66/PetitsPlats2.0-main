@@ -10,6 +10,7 @@ const selectedIngredients = [];
 const selectedAppliances = [];
 const selectedUstensils = [];
 
+//// Management of ingredient... selection
 ingredientsOptions.forEach(option => {
   option.addEventListener('click', function () {
     optionSelect(option, selectedIngredients);
@@ -83,10 +84,12 @@ function filterRecipes() {
       )
     );
   });
+
 updateRecipeDisplay(filteredRecipes);
   totalRecipes = filteredRecipes.length;
   totalRecipesElement.textContent = `${totalRecipes} recettes`;
   recipeCardsContainer.appendChild(totalRecipesElement);
+  // error message 
   if (filteredRecipes.length === 0) {
     const selectedOptions = [...selectedIngredients, selectedAppliances[0], ...selectedUstensils].join(', ');
     const errorMessageElement = document.createElement('p');
@@ -98,9 +101,6 @@ updateRecipeDisplay(filteredRecipes);
   }
   
 }
-
-
-
 
 function updateRecipeDisplay(recipes) {
   recipeCardsContainer.innerHTML = '';
