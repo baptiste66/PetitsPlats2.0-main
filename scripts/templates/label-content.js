@@ -1,16 +1,34 @@
 import { cardDetails } from '../models/data-Card.js';
 
-const labelIngredient = document.querySelector('#ingredients');
-const labelUstensils = document.querySelector('#ustensils');
-const labelAppliance = document.querySelector('#appliance');
-
-
+const labelIngredient = document.querySelector('#ingredientsList');
+const labelUstensils = document.querySelector('#utensilsList');
+const labelAppliance = document.querySelector('#appliancesList');
 
 const uniqueIngredients = [];
 const uniqueUstensils = [];
 const uniqueAppliance = [];
 
-// push ingredient in label 
+
+const filterButtons = document.querySelectorAll('.filterBtn');
+const filter = document.querySelector('.filterList');
+
+filterButtons.forEach(filterButton => {
+  filterButton.addEventListener('click', () => {
+    if (filterButton.classList.contains('active')) {
+      filterButton.classList.remove('active');
+    } else {
+      filterButton.classList.add('active');
+    }
+  });
+
+  const searchInput = filterButton.querySelector('.filterInput');
+  searchInput.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+});
+
+
+// Push ingredient in label
 cardDetails.forEach(label => {
   label.ingredients.forEach(ingredient => {
     if (!uniqueIngredients.includes(ingredient.ingredient)) {
@@ -19,40 +37,36 @@ cardDetails.forEach(label => {
   });
 });
 
-
-
 uniqueIngredients.forEach(ingredient => {
   const option = document.createElement('option');
   option.textContent = ingredient;
   labelIngredient.appendChild(option);
 });
 
-// for ustensils
+// For ustensils
 cardDetails.forEach(label => {
-    label.ustensils.forEach(ustensils => {
-      if (!uniqueUstensils.includes(ustensils)) {
-        uniqueUstensils.push(ustensils);
-      }
-    });
-  });
-
-  
-  uniqueUstensils.forEach(ustensils => {
-    const option = document.createElement('option');
-    option.textContent = ustensils;
-    labelUstensils.appendChild(option);
-  });
-  // for appliances 
-  cardDetails.forEach(label => {
-    if (!uniqueAppliance.includes(label.appliance)) {
-        uniqueAppliance.push(label.appliance);
+  label.ustensils.forEach(ustensils => {
+    if (!uniqueUstensils.includes(ustensils)) {
+      uniqueUstensils.push(ustensils);
     }
+  });
 });
 
+uniqueUstensils.forEach(ustensils => {
+  const option = document.createElement('option');
+  option.textContent = ustensils;
+  labelUstensils.appendChild(option);
+});
 
+// For appliances
+cardDetails.forEach(label => {
+  if (!uniqueAppliance.includes(label.appliance)) {
+    uniqueAppliance.push(label.appliance);
+  }
+});
 
 uniqueAppliance.forEach(appliance => {
-    const option = document.createElement('option');
-    option.textContent = appliance;
-    labelAppliance.appendChild(option);
+  const option = document.createElement('option');
+  option.textContent = appliance;
+  labelAppliance.appendChild(option);
 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>petits plats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,23 +27,49 @@
     </header>
     <main>
         <div class="tag-research">
-            <form>
-            <select id="ingredients" name="Ingrédients">
-                <option value="default" disabled selected>Ingrédients</option>
-                <!-- Ajoutez d'autres options ici -->
-            </select>
-            
-            <select id="appliance" name="appareils">
-                <option value="default" disabled selected>Appareils</option>
-                <!-- Ajoutez d'autres options ici -->
-            </select>
-            
-            <select id="ustensils" name="ustensiles">
-                <option value="default" disabled selected>Ustensiles</option>
-                <!-- Ajoutez d'autres options ici -->
-            </select>
-        </form>
-    </div>
+                        <div id="ingredientsFilter" class="filter">
+                            <div id="ingredients" class="filterBtn ">
+                                <span class="filterBtnName">Ingrédients</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <div id="ingredientsList" class="filterList">
+                                    <div class="inputFilterBtn ">
+                                        <input type="text" id="ingredientsSearchInput" class="filterInput ">
+                                        <button id="ingredientsSearchButton" class="searchInputButton ">
+                                            <i class="fa-solid fa-magnifying-glass filtersIcon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="appliancesFilter" class="filter">
+                            <div id="appliances" class="filterBtn ">
+                                <span class="filterBtnName">Appareils</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <div id="appliancesList" class="filterList">
+                                    <div class="inputFilterBtn">
+                                        <input type="text" id="appliancesSearchInput" class="filterInput ">
+                                        <button id="appliancesSearchButton" class="searchInputButton ">
+                                            <i class="fa-solid fa-magnifying-glass filtersIcon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="utensilsFilter" class="filter">
+                            <div id="utensils" class="filterBtn  ">
+                                <span class="filterBtnName">Ustensiles</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <div id="utensilsList" class="filterList">
+                                    <div class="inputFilterBtn">
+                                        <input type="text" id="utensilsSearchInput" class="filterInput">
+                                        <button id="utensilsSearchButton" class="searchInputButton">
+                                            <i class="fa-solid fa-magnifying-glass filtersIcon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     <span class="select-option"></span>
     <div id="card">
         
@@ -54,7 +81,8 @@
 <script type="module" src="./data/recipes.js"></script>
 <script type="module" src="./scripts/models/data-Card.js"></script>
 <script type="module" src="./scripts/templates/card.js"></script>
-<script type="module" src="./scripts/utils/label-research.js"></script>
+
 <script type="module" src="./scripts/templates/label-content.js"></script>
 <script type="module" src="./scripts/utils/main search bar.js"></script>
 <script type="module" src="./scripts/utils/secondary search.js"></script>
+<script type="module" src="./scripts/utils/label-research.js"></script>

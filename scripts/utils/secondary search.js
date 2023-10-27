@@ -1,8 +1,8 @@
 import { cardDetails } from '../models/data-Card.js';
 
-const ingredientsSelect = document.querySelector('#ingredients');
-const applianceSelect = document.querySelector('#appliance');
-const ustensilsSelect = document.querySelector('#ustensils');
+const ingredientsOptions = document.querySelectorAll('#ingredientsList option');
+const applianceOptions = document.querySelectorAll('#appliancesList option');
+const ustensilsOptions = document.querySelectorAll('#utensilsList option');
 const selectContainer = document.querySelector('.select-option');
 const recipeCardsContainer = document.querySelector('#card');
 
@@ -10,78 +10,55 @@ const selectedIngredients = [];
 const selectedAppliances = [];
 const selectedUstensils = [];
 
-ingredientsSelect.addEventListener('change', function () {
-  optionSelect(this, selectedIngredients);
-});
-applianceSelect.addEventListener('change', function () {
-  optionSelect(this, selectedAppliances);
-});
-
-ustensilsSelect.addEventListener('change', function () {
-  optionSelect(this, selectedUstensils);
+ingredientsOptions.forEach(option => {
+  option.addEventListener('click', function () {
+    optionSelect(option, selectedIngredients);
+  });
 });
 
+applianceOptions.forEach(option => {
+  option.addEventListener('click', function () {
+    optionSelect(option, selectedAppliances);
+  });
+});
 
-function optionSelect(selectElement, selectedItems) {
-  const selectedOption = selectElement.options[selectElement.selectedIndex];
-  if (selectedOption.value !== 'default') {
-    if (selectedItems.includes(selectedOption.text)) {
-      const itemIndex = selectedItems.indexOf(selectedOption.text);
+ustensilsOptions.forEach(option => {
+  option.addEventListener('click', function () {
+    optionSelect(option, selectedUstensils);
+  });
+});
+
+function optionSelect(option, selectedItems) {
+  if (option.value !== 'default') {
+    const optionText = option.text;
+    if (selectedItems.includes(optionText)) {
+      return;
+    }
+    selectedItems.push(optionText);
+    const button = document.createElement('p');
+    button.textContent = optionText;
+
+    const removeButton = document.createElement('button');
+    const closeIcon = document.createElement('img');
+    closeIcon.src = '../assets/svg/close.svg';
+
+    removeButton.appendChild(closeIcon);
+    removeButton.addEventListener('click', function () {
+      const itemIndex = selectedItems.indexOf(optionText);
       if (itemIndex !== -1) {
         selectedItems.splice(itemIndex, 1);
       }
-      const selectedOptionButtons = selectContainer.querySelectorAll('p');
-      for (const button of selectedOptionButtons) {
-        if (button.textContent === selectedOption.text) {
-          selectContainer.removeChild(button);
-        }
-      }
-    } else {
-      selectedItems.push(selectedOption.text);
-      const button = document.createElement('p');
-      button.textContent = selectedOption.text;
-
-      const removeButton = document.createElement('button');
-      const closeIcon = document.createElement('img');
-      closeIcon.src = '../assets/svg/close.svg'; 
-
-      removeButton.appendChild(closeIcon);
-      removeButton.addEventListener('click', function () {
-        const itemIndex = selectedItems.indexOf(selectedOption.text);
-        if (itemIndex !== -1) {
-          selectedItems.splice(itemIndex, 1);
-        }
-        selectContainer.removeChild(button);
-        selectElement.selectedIndex = 0;
-        filterRecipes();
-      });
-
-      button.appendChild(removeButton);
-      selectContainer.appendChild(button);
-    }
-
-    const options = [...selectElement.options];
-    options.sort((a, b) => {
-      const aSelected = selectedItems.includes(a.text);
-      const bSelected = selectedItems.includes(b.text);
-      if (aSelected === bSelected) {
-        return 0;
-      } else if (aSelected) {
-        return -1;
-      } else {
-        return 1;
-      }
+      selectContainer.removeChild(button);
+      option.style.backgroundColor = '';
+      option.disabled = false;
+      filterRecipes();
     });
-    
-    selectElement.innerHTML = '';
-    for (const option of options) {
-      selectElement.appendChild(option);
-    }
 
-    selectedOption.style.backgroundColor = '#FFD15B';
-    selectedOption.disabled = true;
-    selectElement.selectedIndex = 0;
+    button.appendChild(removeButton);
+    selectContainer.appendChild(button);
 
+    option.style.backgroundColor = '#FFD15B';
+    option.disabled = true;
     filterRecipes();
   }
 }
@@ -92,8 +69,6 @@ totalRecipesElement.setAttribute('class', 'card__total');
 
 let totalRecipes = 0;
 recipeCardsContainer.appendChild(totalRecipesElement);
-
-
 
 function filterRecipes() {
   const filteredRecipes = cardDetails.filter((recipe) => {
