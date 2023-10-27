@@ -15,7 +15,7 @@ cardDetails.forEach(card => {
 
     recipeCard.innerHTML = `
    
-        <img src="../../assets/photos recette/${card.image}" alt="${card.name}">
+        <img src="assets/photos recette/${card.image}" alt="${card.name}">
          <p  class="card__time">${card.time} min</p>
         <h2>${card.name}</h2>
         <span class="debord"><p><span class="card__title grey">Recette </span>: <br> ${card.description}</p></span>

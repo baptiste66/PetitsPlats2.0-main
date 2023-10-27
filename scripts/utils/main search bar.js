@@ -12,7 +12,7 @@ let closeButton = null;
 function addCloseButton() {
     closeButton = document.createElement('button');
     closeButton.classList.add('reset-research')
-    closeButton.innerHTML = '<img src="../assets/svg/close.svg" alt="close">';
+    closeButton.innerHTML = '<img src="assets/svg/close.svg" alt="close">';
     closeButton.addEventListener('click', function () {
         searchBar.value = '';
         closeButton.style.display = 'none';
@@ -107,7 +107,7 @@ function updateRecipeDisplay(recipes) {
         recipeLink.href = '#';
         
         recipeCardElement.innerHTML = `
-            <img src="../../assets/photos recette/${card.image}" alt="${card.name}">
+            <img src="assets/photos recette/${card.image}" alt="${card.name}">
             <p class="card__time">${card.time} min</p>
             <h2>${card.name}</h2>
             <span class="debord">

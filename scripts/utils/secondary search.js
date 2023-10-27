@@ -40,7 +40,7 @@ function optionSelect(option, selectedItems) {
 
     const removeButton = document.createElement('button');
     const closeIcon = document.createElement('img');
-    closeIcon.src = '../assets/svg/close.svg';
+    closeIcon.src = 'assets/svg/close.svg';
 
     removeButton.appendChild(closeIcon);
     removeButton.addEventListener('click', function () {
@@ -111,7 +111,7 @@ function updateRecipeDisplay(recipes) {
     const recipeLink = document.createElement('a');
     recipeLink.href = '#';
     recipeCard.innerHTML = `
-        <img src="../../assets/photos recette/${card.image}" alt="${card.name}">
+        <img src="assets/photos recette/${card.image}" alt="${card.name}">
         <p class="card__time">${card.time} min</p>
         <h2>${card.name}</h2>
         <span class="debord">

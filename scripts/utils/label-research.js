@@ -26,7 +26,7 @@ ingredientsSearch.forEach(input => {
         const searchText = input.value;
         filterOptions(ingredientsOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
+        
         if (searchText === '') {
             closeIngredient.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -40,7 +40,7 @@ applianceSearch.forEach(input => {
         const searchText = input.value;
         filterOptions(applianceOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
+       
         if (searchText === '') {
             closeAppliance.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -54,7 +54,7 @@ ustensilsSearch.forEach(input => {
         const searchText = input.value;
         filterOptions(ustensilsOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
+        
         if (searchText === '') {
             closeUtensils.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -65,7 +65,7 @@ ustensilsSearch.forEach(input => {
 
 closeIngredient.forEach(closeButton => {
     closeButton.addEventListener('click', () => {
-        // Réinitialise la barre de recherche et supprime la classe "delete"
+        
         ingredientsSearch.forEach(input => {
             input.value = '';
             filterOptions(ingredientsOptions, '');
@@ -76,7 +76,7 @@ closeIngredient.forEach(closeButton => {
 
 closeAppliance.forEach(closeButton => {
     closeButton.addEventListener('click', () => {
-        // Réinitialise la barre de recherche et supprime la classe "delete"
+        
         applianceSearch.forEach(input => {
             input.value = '';
             filterOptions(applianceOptions, '');
@@ -87,7 +87,7 @@ closeAppliance.forEach(closeButton => {
 
 closeUtensils.forEach(closeButton => {
     closeButton.addEventListener('click', () => {
-        // Réinitialise la barre de recherche et supprime la classe "delete"
+        
         ustensilsSearch.forEach(input => {
             input.value = '';
             filterOptions(ustensilsOptions, '');
@@ -97,7 +97,7 @@ closeUtensils.forEach(closeButton => {
 });
 
 window.addEventListener('load', function () {
-    // Si la barre de recherche est vide, ajoute la classe "delete" aux boutons close
+    
     ingredientsSearch.forEach(input => {
         if (input.value === '') {
             closeIngredient.forEach(closeButton => closeButton.classList.add('delete'));
