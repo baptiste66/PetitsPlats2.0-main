@@ -60,11 +60,7 @@ searchForm.addEventListener('submit', (event) => {
         const filteredRecipes = cardDetails.filter((recipe) => {
             const { name, ingredients, description } = recipe;
             
-            const isMatch = name.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm);
-            if (isMatch) return true;
-            
-            const hasMatchingIngredient = ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchTerm));
-            return hasMatchingIngredient;
+            return name.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm) || ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchTerm));
         });
         // if no result 
         if (filteredRecipes.length === 0) {
@@ -130,4 +126,4 @@ function formatIngredients(ingredients) {
         return formattedIngredient;
     });
     return ingredientList.join('<br>');
-}
+}console.timeEnd("Benchmark");
