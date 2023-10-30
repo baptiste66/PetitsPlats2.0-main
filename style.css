@@ -5,6 +5,9 @@ body{
 header{
     display: flex;
 }
+img{
+  object-fit: cover;
+}
 a{
     color: black;
     text-decoration: none;
@@ -100,11 +103,13 @@ header p{position: absolute;
   height: 53px;
   align-items: center;
   margin-left: 100px;
-  border: 5px;
+  border-radius: 5px;
   padding-left: 15px;
 }
 .select-option button{
-  margin-left: 80px;
+  display: flex;
+  margin-left: auto;
+  margin-right: 10px;
   border: none;
   outline: none;
   background: none;
@@ -120,10 +125,10 @@ header p{position: absolute;
   .filterBtn {display: flex;
     cursor: pointer;
     align-items: center;
-    padding: 10px;
     border-radius: 5px;
     width: 200px;
     background-color: #fff;
+    padding: 16px 10px;
   }
 
   
@@ -141,6 +146,7 @@ header p{position: absolute;
     display: flex;
     align-items: center;
     padding: 10px;
+   
   }
   
   .filterInput {
@@ -167,7 +173,8 @@ header p{position: absolute;
     content: "\f106"; 
   }
   .filterBtn.active{
-    display: block
+    display: block;
+    margin-bottom: -200px;
   }
 .searchInputButton{
   margin-left: -25px;

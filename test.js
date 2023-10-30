@@ -1737,7 +1737,7 @@ function affichageDesRecettes(recipes) {
 
 // Algo 1 boucle for while 
 
-const valeur = "four";
+const valeur = "concombre";
     if (valeur.length > 3) {
     const filteredRecipes = [];
     let i = 0;
