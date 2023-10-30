@@ -53,8 +53,9 @@ cardDetails.forEach(label => {
 });
 
 uniqueUstensils.forEach(ustensils => {
+  const formattedUstensils = ustensils.charAt(0).toUpperCase() + ustensils.slice(1);
   const option = document.createElement('option');
-  option.textContent = ustensils;
+  option.textContent = formattedUstensils;
   labelUstensils.appendChild(option);
 });
 
