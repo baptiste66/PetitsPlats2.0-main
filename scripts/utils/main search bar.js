@@ -5,8 +5,6 @@ const recipeCardsContainer = document.querySelector('#card');
 const searchButton = document.querySelector('.research__logo')
 const searchForm = document.querySelector('.research')
 
-
-
 let closeButton = null;
 
 function addCloseButton() {
@@ -19,7 +17,7 @@ function addCloseButton() {
     });
     searchBar.parentNode.appendChild(closeButton);
 }
-
+//for input 
 searchBar.addEventListener('input', function () {
     if (searchBar.value.trim().length > 0) {
         if (!closeButton) {
@@ -48,6 +46,7 @@ window.addEventListener('load', function () {
     }
 });
 
+
 const totalRecipesElement = document.createElement('p');
 totalRecipesElement.setAttribute('class', 'card__total');
 
@@ -58,88 +57,92 @@ searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const searchTerm = searchBar.value.toLowerCase();
-    
     if (searchTerm.length > 3) {
-        const filteredRecipes = cardDetails.filter((recipe) => {
-            const { name, ingredients, description } = recipe;
-            
-            const isMatch = name.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm);
-            if (isMatch) return true;
-            
-            const hasMatchingIngredient = ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchTerm));
-            return hasMatchingIngredient;
-        });
+    const filteredRecipes = [];
+    let i = 0;
+    while (i < cardDetails.length) {
+        const { name, ingredients, description, image, time } = cardDetails[i];
 
-        if (filteredRecipes.length === 0) {
-            const errorMessageElement = document.createElement('div');
-            errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
-            errorMessageElement.classList.add('error-message');
-            recipeCardsContainer.innerHTML = '';
-            recipeCardsContainer.appendChild(errorMessageElement);
+        if (name.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm)) {
+            filteredRecipes.push(cardDetails[i]);
         } else {
-           
-    
-            updateRecipeDisplay(filteredRecipes);
-            totalRecipes = filteredRecipes.length;
-            totalRecipesElement.textContent = `${totalRecipes} recettes`;
-            recipeCardsContainer.appendChild(totalRecipesElement);
+            for (const ingredient of ingredients) {
+                if (ingredient.ingredient.toLowerCase().includes(searchTerm)) {
+                    filteredRecipes.push(cardDetails[i]);
+                    break;
+                }
+            }
         }
+        i++;
+    }
+
+    if (filteredRecipes.length === 0) {
+      const errorMessageElement = document.createElement('div');
+      errorMessageElement.textContent = `Aucune recette ne contient '${searchTerm}'. Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+      errorMessageElement.classList.add('error-message'); 
+      recipeCardsContainer.innerHTML = ''; 
+      recipeCardsContainer.appendChild(errorMessageElement); 
     } else {
-        
-        updateRecipeDisplay(cardDetails);
-        totalRecipes = cardDetails.length;
+
+        updateRecipeDisplay(filteredRecipes);
+        totalRecipes = filteredRecipes.length;
         totalRecipesElement.textContent = `${totalRecipes} recettes`;
         recipeCardsContainer.appendChild(totalRecipesElement);
     }
-});
+}else{
+    updateRecipeDisplay(cardDetails);
+        totalRecipes = cardDetails.length;
+        totalRecipesElement.textContent = `${totalRecipes} recettes`;
+        recipeCardsContainer.appendChild(totalRecipesElement);
+}
+  });
 
 
 
 
 function updateRecipeDisplay(recipes) {
-    recipeCardsContainer.innerHTML = '';
+  recipeCardsContainer.innerHTML = '';
 
-    recipes.forEach(card => {
-        const recipeCardElement = document.createElement('div');
-        recipeCardElement.classList.add('recipe-card');
-        
-        const recipeLink = document.createElement('a');
-        recipeLink.href = '#';
-        
-        recipeCardElement.innerHTML = `
-            <img src="assets/photos recette/${card.image}" alt="${card.name}">
-            <p class="card__time">${card.time} min</p>
-            <h2>${card.name}</h2>
-            <span class="debord">
-                <p><span class="card__title grey">Recette</span>: <br>${card.description}</p>
-            </span>
-            <p><span class="card__title grey">Ingrédients</span>: <br><span class="card__ingredient">${formatIngredients(card.ingredients)}</span></p>
-        `;
-        recipeLink.appendChild(recipeCardElement);
-        
-        recipeCardsContainer.appendChild(recipeLink);
-    });
+  for (let i = 0; i < recipes.length; i++) {
+    const card = recipes[i];
+    const recipeCard = document.createElement('div');
+    recipeCard.classList.add('recipe-card');
+    const recipeLink = document.createElement('a');
+    recipeLink.href = '#';
+    recipeCard.innerHTML = `
+        <img src="assets/photos recette/${card.image}" alt="${card.name}">
+        <p class="card__time">${card.time} min</p>
+        <h2>${card.name}</h2>
+        <span class="debord">
+            <p><span class="card__title grey">Recette</span>: <br>${card.description}</p>
+        </span>
+        <p><span class="card__title grey">Ingrédients</span>: <br><span class="card__ingredient">${formatIngredients(card.ingredients)}</span></p>
+    `;
+    recipeLink.appendChild(recipeCard);
+    recipeCardsContainer.appendChild(recipeLink);
+  }
 }
 
-
-
 function formatIngredients(ingredients) {
-    if (!Array.isArray(ingredients)) {
-        return ''; 
+  if (!ingredients) return '';
+
+  const ingredientList = [];
+
+  for (let i = 0; i < ingredients.length; i++) {
+    const ingredient = ingredients[i];
+    let formattedIngredient = `<span class="card__ingredient__content">${ingredient.ingredient}`;
+
+    if (ingredient.quantity) {
+      formattedIngredient += `<br><span class="card__ingredient__quantity grey">${ingredient.quantity}`;
+      if (ingredient.unit) {
+        formattedIngredient += ` ${ingredient.unit}`;
+      }
+      formattedIngredient += `</span>`;
     }
 
-    const ingredientList = ingredients.map(ingredient => {
-        let formattedIngredient = `<span class="card__ingredient__content">${ingredient.ingredient}`;
-        if (ingredient.quantity) {
-            formattedIngredient += `<br><span class="card__ingredient__quantity grey">${ingredient.quantity}`;
-            if (ingredient.unit) {
-                formattedIngredient += ` ${ingredient.unit}`;
-            }
-            formattedIngredient += `</span>`;
-        }
-        formattedIngredient += `</span>`;
-        return formattedIngredient;
-    });
+    formattedIngredient += `</span>`;
+    ingredientList.push(formattedIngredient);
+  }
 
-    return ingredientList.join('<br>');
+  return ingredientList.join('<br>');
 }
