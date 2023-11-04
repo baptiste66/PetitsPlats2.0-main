@@ -40,7 +40,6 @@ applianceSearch.forEach(input => {
         const searchText = input.value;
         filterOptions(applianceOptions, searchText);
 
-        // Ajoute la classe "delete" si la barre de recherche est vide
         if (searchText === '') {
             closeAppliance.forEach(closeButton => closeButton.classList.add('delete'));
         } else {
@@ -97,7 +96,6 @@ closeUtensils.forEach(closeButton => {
 });
 // reset button for f5
 window.addEventListener('load', function () {
-    // Si la barre de recherche est vide, ajoute la classe "delete" aux boutons close
     ingredientsSearch.forEach(input => {
         if (input.value === '') {
             closeIngredient.forEach(closeButton => closeButton.classList.add('delete'));
