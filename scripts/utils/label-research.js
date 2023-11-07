@@ -94,6 +94,7 @@ closeUtensils.forEach(closeButton => {
         });
     });
 });
+
 // reset button for f5
 window.addEventListener('load', function () {
     ingredientsSearch.forEach(input => {

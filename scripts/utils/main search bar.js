@@ -77,7 +77,7 @@ searchForm.addEventListener('submit', (event) => {
             recipeCardsContainer.appendChild(totalRecipesElement);
         }
     } else {
-        //if less 3 letters
+        //if -= 3 letters
         updateRecipeDisplay(cardDetails);
         totalRecipes = cardDetails.length;
         totalRecipesElement.textContent = `${totalRecipes} recettes`;
@@ -110,7 +110,7 @@ function updateRecipeDisplay(recipes) {
 }
 
 function formatIngredients(ingredients) {
-    if (!Array.isArray(ingredients)) {
+    if (!ingredients) {
         return ''; 
     }
     const ingredientList = ingredients.map(ingredient => {
